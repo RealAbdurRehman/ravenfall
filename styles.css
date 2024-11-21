@@ -1,0 +1,28 @@
+/* General styles */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Remove Later */
+    background-color: darkslategrey;
+}
+
+#canvas, #collision-canvas {
+  cursor: none;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#collision-canvas {
+  display: none;
+}
