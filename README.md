@@ -37,3 +37,4 @@ This game is developed using **HTML**, **CSS**, and **JavaScript** with the **HT
     - Tracking and displaying the score.
 
 ## Screenshot
+![Demo](https://cloud-9uyncez41-hack-club-bot.vercel.app/0preview.png)
