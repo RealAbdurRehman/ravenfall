@@ -78,12 +78,11 @@ class Raven {
         this.size = Math.random() * 100 + 125;
         this.x = -this.size;
         this.y = Math.random() * (CANVAS_HEIGHT - this.size);
-        this.directionX = Math.random() * 15 + 5;
-        this.directionY = Math.random() * 20 - 5;
-        this.image = new Image();
-        this.image.src = "./Public/Ravens/raven1.png";
+        this.directionX = Math.random() * 10 + 5;
+        this.directionY = Math.random() * 10 - 5;
+        this.frames = [];
         this.isMarkedForDeletion = false;
-        this.frame = 1;
+        this.frame = 0;
         this.timeToNextFrame = 0;
         this.frameInterval = Math.random() * 25 + 25;
         this.randomColors = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)];
@@ -91,6 +90,11 @@ class Raven {
         this.sound = new Audio();
         this.sound.src = "./Public/Audios/raven-death.wav";
         this.sound.volume = Math.random() * 0.25 + 0.25;
+        for (let i = 1; i <= 25; i++) {
+            const image = new Image();
+            image.src = `./Public/Ravens/raven${i}.png`;
+            this.frames.push(image);
+        }
     }
     update(deltaTime) {
         if (this.y < 0 || this.y > CANVAS_HEIGHT - this.size) {
@@ -104,16 +108,14 @@ class Raven {
             this.frame++;
             this.timeToNextFrame = 0;
         }
-        if (this.frame > 25) {
-            this.frame = 1;
-        } else {
-            this.image.src = `./Public/Ravens/raven${this.frame}.png`;
+        if (this.frame >= 25) {
+            this.frame = 0;
         }
     }
     draw() {
         collisionCtx.fillStyle = this.color;
         collisionCtx.fillRect(this.x, this.y, this.size, this.size);
-        ctx.drawImage(this.image, this.x, this.y, this.size, this.size);
+        ctx.drawImage(this.frames[this.frame], this.x, this.y, this.size, this.size);
     }
 }
 
